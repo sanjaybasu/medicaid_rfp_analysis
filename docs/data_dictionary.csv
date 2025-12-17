@@ -1,0 +1,48 @@
+variable_name,file,definition,data_type,valid_values,source
+state,document_inventory.csv,US state name,string,32 state names,Derived from file path
+filename,document_inventory.csv,Original document filename,string,Any,Original files
+document_type,document_inventory.csv,Classification of document type,categorical,"rfp,proposal,scoring,contract,award,amendment,attachment,protest,other",Pattern matching
+mco_name,document_inventory.csv,Managed Care Organization name if identifiable,string,29 MCO names,Pattern matching
+rfp_year,document_inventory.csv,Year RFP was issued,integer,2017-2024,Pattern matching
+format,document_inventory.csv,File format extension,categorical,"pdf,docx,doc,zip,csv,xlsx",File extension
+size_mb,document_inventory.csv,File size in megabytes,float,0-100+,File system
+compressed,document_inventory.csv,Whether file is a ZIP archive,boolean,"TRUE,FALSE",File extension
+full_path,document_inventory.csv,Full path to original file,string,Any,File system
+claim_id,claim_inventory_full.csv,Unique identifier for extracted claim,integer,Auto-increment,Generated
+verbatim_text,claim_inventory_full.csv,Exact text excerpt containing the claim (max 300 chars),string,Any,Document extraction
+domain_code,claim_inventory_full.csv,Primary domain classification,categorical,"VBC,PH,AC,CC,QM,PM,HIT,WD",Coding scheme
+clinical_area,claim_inventory_full.csv,Clinical domain if applicable,categorical,"MAT,PED,BH,CHR,PCP,HOSP,RX,NONE",Coding scheme
+claim_type,claim_inventory_full.csv,Type of claim (historical/projected/etc),categorical,"HIST,PROJ,COMP,METH",Coding scheme
+metric_name,claim_inventory_full.csv,Name of quality metric referenced,string,Any,Document extraction
+metric_steward,claim_inventory_full.csv,Organization responsible for metric,categorical,"NCQA,CMS,State,Internal,Other",Document extraction
+baseline_value,claim_inventory_full.csv,Starting value for comparison,float,Any,Document extraction
+baseline_year,claim_inventory_full.csv,Year of baseline measurement,integer,2015-2024,Document extraction
+outcome_value,claim_inventory_full.csv,Achieved or target value,float,Any,Document extraction
+outcome_year,claim_inventory_full.csv,Year of outcome measurement,integer,2015-2024,Document extraction
+change_type,claim_inventory_full.csv,Type of quantification,categorical,"Q-ABS,Q-PCT,Q-PPT,Q-TGT,Q-NONE",Coding scheme
+change_magnitude,claim_inventory_full.csv,Numeric magnitude of claimed change,float,Any,Document extraction
+change_direction,claim_inventory_full.csv,Direction of change,categorical,"increase,decrease,maintain,NA",Document extraction
+timeline,claim_inventory_full.csv,Timeframe for achievement,string,Any,Document extraction
+evidence_type,claim_inventory_full.csv,Type of evidence cited,categorical,"PR,CG,PP,INT,EXT,NONE",Coding scheme
+citation,claim_inventory_full.csv,Citation text if peer-reviewed,string,Any,Document extraction
+partners,claim_inventory_full.csv,Third parties mentioned in claim,string array,Any,Document extraction
+confidence,claim_inventory_full.csv,Extraction confidence level,categorical,"HIGH,MEDIUM,LOW",LLM assessment
+extraction_method,claim_inventory_full.csv,Method used for extraction,categorical,"llm,pattern",Analysis pipeline
+promise_id,promise_inventory.csv,Unique identifier for commitment,integer,Auto-increment,Generated
+target_value,promise_inventory.csv,Specific target committed to,string,Any,Document extraction
+deadline,promise_inventory.csv,When commitment is to be achieved,string,Any,Document extraction
+contract_year,promise_inventory.csv,Contract year for achievement,categorical,"Year 1,Year 2,Year 3,etc",Document extraction
+consequence,promise_inventory.csv,Penalty or incentive if stated,string,Any,Document extraction
+partner_id,partnership_inventory.csv,Unique identifier for partnership,integer,Auto-increment,Generated
+partner_name,partnership_inventory.csv,Name of partner organization,string,Any,Document extraction
+partner_type,partnership_inventory.csv,Type of partner,categorical,"P-CBO,P-GOV,P-ACAD,P-TECH,P-PROV",Coding scheme
+relationship,partnership_inventory.csv,Nature of partnership,categorical,"contracted,affiliated,collaborative,other",Document extraction
+services,partnership_inventory.csv,Services provided by partner,string array,Any,Document extraction
+outcomes_attributed,partnership_inventory.csv,Outcomes claimed from partnership,string,Any,Document extraction
+geographic_scope,partnership_inventory.csv,Geographic coverage of partnership,categorical,"local,state,regional,national",Document extraction
+ShortName,MCO Outcomes Data.csv,MCO short name from NCQA,string,Any,NCQA HEDIS database
+MeasureName,MCO Outcomes Data.csv,HEDIS measure name,string,Any,NCQA HEDIS database
+Rate,MCO Outcomes Data.csv,Performance rate on measure,float,0-100,NCQA HEDIS database
+ProductYear,MCO Outcomes Data.csv,Reporting year for measure,integer,2019-2023,NCQA HEDIS database
+UpperConfidenceLevel,MCO Outcomes Data.csv,Upper bound of 95% CI,float,Any,NCQA HEDIS database
+LowerConfidenceLevel,MCO Outcomes Data.csv,Lower bound of 95% CI,float,Any,NCQA HEDIS database

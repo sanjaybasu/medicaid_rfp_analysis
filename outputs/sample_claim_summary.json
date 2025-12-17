@@ -1,0 +1,63 @@
+{
+  "analysis_complete": true,
+  "completion_timestamp": "2025-12-17T06:41:32Z",
+  "document_corpus": {
+    "total_source_documents": 265,
+    "total_extracted_text_files": 2833,
+    "states_represented": 32,
+    "corpus_size_gb": 22.6,
+    "extracted_text_mb": 769,
+    "year_range": "2017-2024"
+  },
+  "claim_extraction": {
+    "total_claims": 55914,
+    "by_pattern_type": {
+      "metric": {
+        "count": 44443,
+        "percentage": 79.5
+      },
+      "improvement": {
+        "count": 4694,
+        "percentage": 8.4
+      },
+      "change": {
+        "count": 2388,
+        "percentage": 4.3
+      },
+      "target": {
+        "count": 2196,
+        "percentage": 3.9
+      },
+      "rate": {
+        "count": 2193,
+        "percentage": 3.9
+      }
+    },
+    "numeric_values": {
+      "mean": 35.36,
+      "median": 14.0,
+      "std": 53.40,
+      "ci_95_lower": 34.9,
+      "ci_95_upper": 35.9
+    }
+  },
+  "partnership_extraction": {
+    "total_partnerships": 55364
+  },
+  "top_states_by_claims": [
+    {"state": "California", "claims": 19126, "percentage": 34.2},
+    {"state": "Rhode Island", "claims": 16887, "percentage": 30.2},
+    {"state": "Nebraska", "claims": 3189, "percentage": 5.7},
+    {"state": "Texas", "claims": 1556, "percentage": 2.8},
+    {"state": "Missouri", "claims": 1508, "percentage": 2.7}
+  ],
+  "hedis_outcomes": {
+    "total_records": 16260,
+    "valid_rate_records": 4716,
+    "unique_mcos": 534,
+    "unique_measures": 30,
+    "mean_rate": 67.22,
+    "median_rate": 76.69,
+    "std_rate": 26.23
+  }
+}
