@@ -1,20 +1,22 @@
 # Medicaid MCO RFP Analysis Pipeline
 
-[![DOI](https://img.shields.io/badge/DOI-10.7910%2FDVN%2FXXXXXX-blue)](https://doi.org/10.7910/DVN/XXXXXX)
+[![DOI](https://img.shields.io/badge/DOI-10.7910%2FDVN%2F6EFL00-blue)](https://doi.org/10.7910/DVN/6EFL00)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## Large-Scale Analysis of Medicaid Managed Care Procurement Claims
+## Large Language Model Analysis of Medicaid Managed Care Procurement Accountability
 
 This repository contains the reproducible analysis pipeline for:
 
-> **Basu S. Evaluating Medicaid Managed Care Organization Accountability: A Large-Scale Analysis of RFP Response Claims Across 32 US States.** *Health Affairs.* 2025.
+> **Basu S, Fleming A, Morgan J, Batniji R. Evaluating Medicaid Managed Care Organization Accountability: Large Language Model Analysis of RFP Response Claims Across 32 US States. 2026.
 
 ## Key Findings
 
-- **55,914** quantitative claims extracted from **2,833** documents
-- **55,364** partnership references identified
-- **32** US states represented (2017-2024)
-- **534** MCOs linked to HEDIS outcomes data
+- **372,283** thematic accountability claims extracted from **~460,000** pages
+- **1,666** documents from **265** source files across **32** US states (2017-2024)
+- MCOs **overemphasize** technology (1.25×) and health equity (1.08×) vs RFP requirements
+- MCOs **underemphasize** chronic disease (0.54×) and workforce (0.70×) vs RFP requirements
+- Health equity claims increased **10.3-fold** post-COVID (752 → 7,779)
+- Inter-rater reliability: Cohen's κ = 0.86
 
 ## Repository Structure
 
@@ -28,6 +30,7 @@ medicaid_rfp_analysis/
 │   ├── phase1_document_inventory.py  # Document cataloging
 │   ├── phase1b_extract_documents.py  # Text extraction (PDF/DOCX)
 │   ├── phase2_document_analysis.py   # Claim extraction & coding
+│   ├── thematic_analysis.py          # Thematic claim extraction (RAG + LLM)
 │   ├── interim_analysis.py           # Pattern-based extraction
 │   └── generate_manuscript_data.py   # Generate tables/figures
 ├── data/
@@ -71,6 +74,9 @@ See `data/README.md` for acquisition instructions.
 # Full pipeline (requires source documents)
 python scripts/run_full_analysis.py
 
+# Thematic analysis with RAG + LLM
+python scripts/thematic_analysis.py
+
 # Pattern-based extraction only (faster)
 python scripts/interim_analysis.py
 ```
@@ -82,14 +88,15 @@ python scripts/interim_analysis.py
 | 1 | `phase1_document_inventory.py` | Catalog documents, extract metadata |
 | 1b | `phase1b_extract_documents.py` | Unzip archives, convert PDF/DOCX to text |
 | 2 | `phase2_document_analysis.py` | Extract claims using patterns + LLM |
-| 3+ | `run_full_analysis.py` | Orchestrate all phases |
+| 3 | `thematic_analysis.py` | RAG-based thematic extraction (6 domains) |
+| 4 | `run_full_analysis.py` | Orchestrate all phases |
 
 ## Data Access
 
 ### Pre-processed Data
 The complete extracted dataset is available on Harvard Dataverse:
-- **DOI**: [10.7910/DVN/XXXXXX](https://doi.org/10.7910/DVN/XXXXXX)
-- Includes: 55,914 claims, 55,364 partnerships, document inventory
+- **DOI**: [10.7910/DVN/6EFL00](https://doi.org/10.7910/DVN/6EFL00)
+- Includes: 372,283 thematic claims, theme taxonomy, concordance analysis, temporal trends
 
 ### Source Documents
 Original procurement documents are publicly available from:
@@ -101,36 +108,53 @@ Original procurement documents are publicly available from:
 
 | File | Records | Description |
 |------|---------|-------------|
-| `claims_extracted.csv` | 55,914 | All quantitative claims |
-| `partnerships_extracted.csv` | 55,364 | Partnership references |
+| `thematic_claims.csv` | 372,283 | All thematic accountability claims |
+| `exhibit2_theme_taxonomy.csv` | 36 | Theme and subcategory distribution |
+| `exhibit3_temporal_by_theme.csv` | 48 | Annual claim volumes by theme |
+| `exhibit4_regional_themes.csv` | 30 | Regional distribution by theme |
+| `exhibit5_rfp_mco_concordance.csv` | 179 | RFP-MCO concordance ratios |
 | `document_inventory.csv` | 265 | Source document catalog |
-| `claim_summary.json` | — | Aggregate statistics |
 
 ## Methods Summary
 
-### Claim Extraction Patterns
-```python
-patterns = [
-    (r'(\d+(?:\.\d+)?)\s*(?:percent|%)\s*(?:improvement|...)', 'improvement'),
-    (r'(?:HEDIS|CAHPS|NQF)\s+(?:measure\s+)?([A-Z0-9\-]+)', 'metric'),
-    # ... see scripts/interim_analysis.py for complete patterns
-]
-```
+### Thematic Domains (6 categories, 36 subcategories)
+
+1. **Chronic Disease Management** (28.9%): diabetes, behavioral health, maternal health
+2. **LTSS/Dual Eligibles** (18.0%): long-term services, nursing facilities
+3. **Health Equity** (14.1%): racial/ethnic disparities, language access
+4. **Technology** (13.1%): telehealth, AI/predictive analytics
+5. **Workforce** (13.1%): provider recruitment, CHWs
+6. **SDOH** (12.8%): food insecurity, housing, transportation
+
+### Extraction Pipeline
+
+Claims extracted using retrieval-augmented generation (RAG) with Claude Sonnet 4.5:
+- Document chunking with vector embeddings
+- JSON schema-constrained outputs
+- Verbatim text extraction (≤300 chars)
+- Temperature=0.0 for deterministic outputs
+
+### Hallucination Mitigation
+
+- RAG grounding with explicit source attribution
+- Automated source verification
+- 10% manual validation (97.3% accuracy)
 
 ### Validation
-- Inter-rater reliability: Cohen's kappa > 0.85
+- Inter-rater reliability: Cohen's κ = 0.86
+- Machine learning sensitivity: 0.89
 - Manual review of 200 randomly sampled claims
-- HEDIS outcomes linkage for 534 MCOs
 
 ## Citation
 
 ```bibtex
 @article{basu2025medicaid,
   title={Evaluating Medicaid Managed Care Organization Accountability:
-         A Large-Scale Analysis of RFP Response Claims Across 32 US States},
-  author={Basu, Sanjay},
+         Large Language Model Analysis of RFP Response Claims Across 32 US States},
+  author={Basu, Sanjay and Fleming, Alex and Morgan, John and Batniji, Rajaie},
   journal={Health Affairs},
-  year={2025}
+  year={2025},
+  doi={10.7910/DVN/6EFL00}
 }
 ```
 
@@ -142,7 +166,7 @@ patterns = [
 ## Contact
 
 Sanjay Basu, MD, PhD
-Waymark
+Waymark / University of California, San Francisco
 sanjay.basu@waymarkcare.org
 
 ## Acknowledgments
