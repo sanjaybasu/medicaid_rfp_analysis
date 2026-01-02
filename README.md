@@ -9,14 +9,6 @@ This repository contains the reproducible analysis pipeline for:
 
 > **Basu S, Fleming A, Morgan J, Batniji R. Evaluating Medicaid Managed Care Organization Accountability: Large Language Model Analysis of RFP Response Claims Across 32 US States. 2026.
 
-## Key Findings
-
-- **372,283** thematic accountability claims extracted from **~460,000** pages
-- **1,666** documents from **265** source files across **32** US states (2017-2024)
-- MCOs **overemphasize** technology (1.25×) and health equity (1.08×) vs RFP requirements
-- MCOs **underemphasize** chronic disease (0.54×) and workforce (0.70×) vs RFP requirements
-- Health equity claims increased **10.3-fold** post-COVID (752 → 7,779)
-- Inter-rater reliability: Cohen's κ = 0.86
 
 ## Repository Structure
 
@@ -152,9 +144,7 @@ Claims extracted using retrieval-augmented generation (RAG) with Claude Sonnet 4
   title={Evaluating Medicaid Managed Care Organization Accountability:
          Large Language Model Analysis of RFP Response Claims Across 32 US States},
   author={Basu, Sanjay and Fleming, Alex and Morgan, John and Batniji, Rajaie},
-  journal={Health Affairs},
-  year={2025},
-  doi={10.7910/DVN/6EFL00}
+  year={2026}
 }
 ```
 
@@ -168,7 +158,3 @@ Claims extracted using retrieval-augmented generation (RAG) with Claude Sonnet 4
 Sanjay Basu, MD, PhD
 Waymark / University of California, San Francisco
 sanjay.basu@waymarkcare.org
-
-## Acknowledgments
-
-This research was funded by Waymark.
