@@ -6,13 +6,6 @@ all analysis data is available at harvard dataverse:
 
 **[https://doi.org/10.7910/DVN/6EFL00](https://doi.org/10.7910/DVN/6EFL00)**
 
-## dataset contents
-
-- `all_themes_combined.csv` - all 372,283 extracted claims (127 MB)
-- `normalized_concordance_by_theme.csv` - per-file concordance ratios
-- `covid_comparison_stratified.csv` - temporal trends by document type
-- `document_inventory.csv` - source document catalog with metadata
-- additional summary tables and figures
 
 ## source documents
 
@@ -30,4 +23,4 @@ the complete extracted claims dataset at dataverse enables replication of all an
 
 ## contact
 
-data access inquiries: sanjay@waymarkcare.org
+data access inquiries: sanjay.basu@waymarkcare.org
