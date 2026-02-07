@@ -1,0 +1,60 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "medicaid-rfp-analysis"
+version = "1.0.0"
+description = "llm analysis of medicaid managed care procurement documents"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+authors = [
+    {name = "Sanjay Basu", email = "sanjay@waymarkcare.org"},
+    {name = "Alex Fleming"},
+    {name = "John Morgan"},
+    {name = "Rajaie Batniji"}
+]
+keywords = ["medicaid", "managed-care", "procurement", "llm", "rag", "health-policy"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Scientific/Engineering :: Medical Science Apps."
+]
+
+dependencies = [
+    "pandas>=2.0.0",
+    "numpy>=1.24.0",
+    "matplotlib>=3.7.0",
+    "anthropic>=0.7.0",
+    "chromadb>=0.4.0",
+    "sentence-transformers>=2.2.0",
+    "pypdf>=3.17.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "black>=23.0",
+    "ruff>=0.1.0"
+]
+
+[project.urls]
+Homepage = "https://github.com/sanjaybasu/medicaid_rfp_analysis"
+Repository = "https://github.com/sanjaybasu/medicaid_rfp_analysis"
+Documentation = "https://github.com/sanjaybasu/medicaid_rfp_analysis#readme"
+"Bug Tracker" = "https://github.com/sanjaybasu/medicaid_rfp_analysis/issues"
+"Data Repository" = "https://doi.org/10.7910/DVN/6EFL00"
+
+[tool.setuptools]
+package-dir = {"" = "scripts"}
+
+[tool.black]
+line-length = 100
+target-version = ['py311']
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
