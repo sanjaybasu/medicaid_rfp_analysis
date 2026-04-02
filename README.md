@@ -3,16 +3,17 @@
 [![DOI](https://img.shields.io/badge/DOI-10.7910%2FDVN%2F6EFL00-blue)](https://doi.org/10.7910/DVN/6EFL00)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-## Strategic Misalignment in Medicaid Managed Care Procurement: Large Language Model Analysis of Accountability Claims Across 32 US States
+## Medicaid Managed Care Procurement Reveals Systematic Overemphasis of Technology and Equity Performance Claims Across 32 States
 
 **Authors:** Sanjay Basu, Alex Fleming, John Morgan, Rajaie Batniji
 
+**Manuscript status:** Under review, INQUIRY: The Journal of Health Care Organization, Provision, and Financing (R2 revision submitted April 2026)
 
 ---
 
 ## Overview
 
-This repository contains all code for reproducing analyses from our study examining accountability claims in Medicaid managed care procurement documents across 32 US states (2017-2024). Using retrieval-augmented generation (RAG) with large language models, we extracted and analyzed 372,283 accountability claims from 265 source documents to evaluate alignment between MCO commitments and state priorities.
+This repository contains all code for reproducing analyses from our study examining performance claims in Medicaid managed care procurement documents across 32 US states (2017-2024). Using retrieval-augmented generation (RAG) with large language models, we extracted and analyzed 372,283 performance claims from 265 source documents to evaluate alignment between MCO commitments and state priorities.
 
 
 ## Repository Structure
@@ -208,10 +209,11 @@ If you use this code or data in your research, please cite:
 
 ```bibtex
 @article{basu2026medicaid,
-  title={Strategic Misalignment in Medicaid Managed Care Procurement: Large Language Model Analysis of Accountability Claims Across 32 US States},
+  title={Medicaid Managed Care Procurement Reveals Systematic Overemphasis of Technology and Equity Performance Claims Across 32 States},
   author={Basu, Sanjay and Fleming, Alex and Morgan, John and Batniji, Rajaie},
+  journal={INQUIRY: The Journal of Health Care Organization, Provision, and Financing},
   year={2026},
-  doi={10.1177/00469580261234567},
+  note={Under review},
   url={https://doi.org/10.7910/DVN/6EFL00}
 }
 ```
@@ -228,4 +230,4 @@ Source procurement documents remain subject to original state copyright and dist
 
 ---
 
-**Last Updated:** February 6, 2026
+**Last Updated:** April 2, 2026 (R2 revision)

@@ -80,7 +80,7 @@ QUANTIFICATION_CODES = {
 }
 
 # Prompt templates
-CLAIM_EXTRACTION_PROMPT = """You are analyzing a Medicaid MCO proposal or RFP document for a research study on accountability claims.
+CLAIM_EXTRACTION_PROMPT = """You are analyzing a Medicaid MCO proposal or RFP document for a research study on performance claims.
 
 Document: {state} {mco_name} {year} {doc_type}
 Section text (partial):
